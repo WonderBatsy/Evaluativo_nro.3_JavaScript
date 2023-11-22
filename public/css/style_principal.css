@@ -1,0 +1,230 @@
+/*
+
+Evaluativo nro. 3
+Cátedra: JavaScript
+Alumno: Manuel Paz
+Cédula: 28.264.712
+Sección: N-1113P
+
+*/
+
+
+@font-face {
+
+    font-family: poppins;
+    src: url(fuentes/Poppins-Medium.ttf);
+    
+}
+
+* {
+    
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "poppins";
+
+}
+
+body {
+
+    min-height: 100vh;
+    background: url(imagenes/fondo.png) no-repeat;
+    background-size: cover;
+    background-position: left;
+    color: #fff;
+
+}
+
+.encabezado {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 20px;
+    background: black;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 100;
+
+}
+
+.logo {
+    
+    position: auto;
+    left: 10%;
+    display: flex;
+    align-items: center;
+
+}
+
+.logo img {
+
+    width: auto;
+    height: 9vh;
+
+}
+
+.barra a {
+
+    position: relative;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 80px;
+    
+}
+
+.barra a::before {
+
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #feaa76;
+    transition: .3s;
+
+}
+
+.barra a:hover::before {
+
+    width: 100%;
+
+}
+
+#menu-icon {
+
+    font-size: 50px;
+    color: #feaa76;
+    cursor: pointer;
+    z-index: 10001;
+    display: none;
+
+}
+
+.titulo {
+
+    font-size: clamp(3em, 10vw, 11em);
+    top: 45%;
+    left: 52%;
+    color: black;
+    position: fixed;
+    text-align: center;
+    transition: all .50s ease;
+    transform: translate(-55%, -34%);
+
+}
+
+.titulo:hover {
+
+    transform: translate(-36%, -22%);
+
+}
+
+.credito {
+
+    font-size: clamp(0.5em, 1vw, 2em);
+    top: 18%;
+    right: 2%;
+    color: black;
+    position: fixed;
+    text-align: center;
+    transition: all .50s ease;
+    transform: translate(0, -40%);
+
+}
+
+.credito:hover {
+
+    transform: translate(0, -60%);
+
+}
+
+@media (max-width: 1240px) {
+
+    header {
+
+        padding: 14px 2%;
+        transition: .3s;
+
+    } 
+
+    .barra a {
+
+        padding: 5px 0;
+        margin: 0px 20px;
+
+    }
+
+}
+
+@media (max-width: 1175px) {
+
+    #menu-icon {
+
+        display: block;
+
+    }
+
+    .barra {
+
+        position: absolute;
+        top: 120%;
+        right: -100%;
+        width: 250px;
+        height: auto;
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        transition: all .50s ease;
+        box-shadow: 5px 5px 10px 1px rgba(0,0,0,0.2);
+
+    }
+
+    .barra a {
+
+        display: block;
+        margin: 16px 0;
+        padding: 0px 25px;
+        transition: all .50s ease;
+
+    }
+
+    .barra a:before {
+
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: black;
+        transition: .3s;
+    
+    }
+
+    .barra a:hover {
+
+        color: #feaa76;
+        transform: translateY(5px);
+
+    }
+
+    .barra a.active {
+
+        color: #feaa76;
+
+    }
+
+    .barra.open {
+
+        right: 5%;
+
+    }
+
+}

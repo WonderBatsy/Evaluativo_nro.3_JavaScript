@@ -1,0 +1,120 @@
+<!--
+
+Evaluativo nro. 3
+Cátedra: JavaScript
+Alumno: Manuel Paz
+Cédula: 28.264.712
+Sección: N-1113P
+
+-->
+
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+  <link rel="shorcut icon" type="x-icon" href="public/css/imagenes/logo_tab.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio | iCar Plus</title>
+  <link rel="stylesheet" href="public/css/boxicons.min.css">
+  <link rel="stylesheet" href="public/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="public/css/style_principal.css">
+  <script src="public/js/jquery.min.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+  <header class="encabezado">
+
+    <a href="index.html" class="logo">
+
+      <img src="" alt="logo">
+    
+    </a>
+
+    <!-- Barra de navegación -->
+
+    <nav class="barra">
+
+      <a href="index.html" class="logos_barra">
+        
+        INICIO
+      
+      </a>
+
+      <a href="vehiculos.html" class="logos_barra">
+        
+        VEHÍCULOS
+    
+      </a>
+
+    </nav>
+
+    <!-- Icono de menú para dispositivos móviles -->
+
+    <div class="main">
+
+      <div class="bx bx-menu" id="menu-icon"></div>
+
+    </div>
+
+  </header>
+
+  <!-- Script para cambiar el logo en función del tamaño de la pantalla -->
+
+  <script>
+
+    function resize() {
+
+        if ($(window).width() < 768) { 
+        
+          $(".logo img").attr('src', 'public/css/imagenes/logo.png');
+
+        } else {
+
+          $(".logo img").attr('src', 'public/css/imagenes/logo_texto.png');
+
+        }
+    }
+
+    resize();
+
+    $(window).on('resize', resize);
+
+  </script>
+
+  <!-- Script para abrir/cerrar la barra de navegación en dispositivos móviles -->
+
+  <script>
+    
+    let menu = document.querySelector("#menu-icon");
+    let barra = document.querySelector(".barra");
+
+    menu.onclick = () => {
+
+        menu.classList.toggle("bx-x");
+        barra.classList.toggle("open");
+
+    }
+    
+  </script>
+
+  <h1 class="titulo">
+    
+    ¡BIENVENIDO!
+
+  </h1>
+
+  <p class="credito">
+    
+    Elaborado por Manuel Paz
+  
+  </p>
+
+</body>
+
+</html>

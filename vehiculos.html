@@ -1,0 +1,311 @@
+<!--
+
+Evaluativo nro. 3
+Cátedra: JavaScript
+Alumno: Manuel Paz
+Cédula: 28.264.712
+Sección: N-1113P
+
+-->
+
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+  <link rel="shorcut icon" type="x-icon" href="public/css/imagenes/logo_tab.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehículos | iCar Plus</title>
+  <link rel="stylesheet" href="public/css/boxicons.min.css">
+  <link rel="stylesheet" href="public/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="public/css/style_vehiculos.css">
+  <script src="public/js/jquery.min.js" type="text/javascript"></script>
+  <script src="public/js/sweetalert2@11.js" type="text/javascript"></script>
+  <script src="public/js/app.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+  <header class="encabezado">
+
+    <a href="index.html" class="logo">
+
+      <img src="" alt="logo">
+    
+    </a>
+
+    <!-- Barra de navegación -->
+
+    <nav class="barra">
+
+      <a href="index.html" class="logos_barra">
+        
+        INICIO
+      
+      <a href="vehiculos.html" class="logos_barra">
+        
+        VEHÍCULOS
+    
+      </a>
+
+    </nav>
+
+    <!-- Icono de menú para dispositivos móviles -->
+
+    <div class="main">
+
+      <div class="bx bx-menu" id="menu-icon"></div>
+
+    </div>
+
+  </header>
+
+  <!-- Script de SweetAlert para mostrar un mensaje al cargar la página -->
+
+  <script>
+
+    Swal.fire({
+
+        title: 'Advertencia',
+        html: '<div class="text-start">Debido a la falta de una base de datos, la información que se mostrará y se introducirá se almacenará en la memoria local del navegador. <br><br> Se recomienda no sobrecargarla subiendo imágenes o utilizar el modo incógnito</div>',
+        icon: 'warning',
+        color: 'black',
+        width: 620,
+        showDenyButton: true,
+        confirmButtonColor: '#f67a2d',
+        denyButtonColor: 'black',
+        confirmButtonText: 'Continuar al registro de vehículos',
+        denyButtonText: 'Regresar a la Página Principal',
+
+    }).then((result) => {
+
+        if (result.isDenied) {
+
+            window.location.href = 'index.html';
+
+        }
+
+    })
+
+  </script>
+
+  <!-- Contenido principal de la página -->
+
+    <div class="wrapper">
+
+        <div class="contenedor principal">
+
+            <div class="row justify-content-md-center">
+
+                <div class="col-md-10 centro">
+
+                    <!-- Formulario de entrada de datos -->
+
+                    <form id="carForm">
+
+                    <div class="input-box">
+
+                        <header>
+                            
+                            Entrada de datos de vehículo
+                        
+                        </header>
+                                        
+                        <div class="campo_entrada">
+
+                            <input type="text" class="entrada" id="marca" maxlength="30" required oninvalid="this.setCustomValidity('Debe llenar este campo')" oninput="setCustomValidity('')" autocomplete="off">
+
+                            <label for="marca">
+                            
+                                Marca
+                            
+                            </label>
+
+                        </div>
+
+                        <div class="campo_entrada">
+
+                            <input type="text" class="entrada" id="modelo" maxlength="30" required oninvalid="this.setCustomValidity('Debe llenar este campo')" oninput="setCustomValidity('')" autocomplete="off">
+
+                            <label for="modelo">
+                            
+                                Modelo
+                            
+                            </label>
+
+                        </div>
+
+                        <div class="campo_entrada">
+
+                            <input type="text" class="entrada" id="tipo" maxlength="30" required oninvalid="this.setCustomValidity('Debe llenar este campo')" oninput="setCustomValidity('')" autocomplete="off">
+
+                            <label for="tipo">
+                            
+                                Tipo
+                            
+                            </label>
+
+                        </div>
+
+                        <div class="campo_entrada">
+
+                            <input type="text" class="entrada" id="ano" maxlength="4" onkeypress="chequearAno(event)" required oninvalid="this.setCustomValidity('Debe llenar este campo')" oninput="setCustomValidity('')" autocomplete="off">
+
+                            <label for="ano">
+                            
+                                Año
+                            
+                            </label>
+
+                        </div>
+
+                        <div class="campo_entrada">
+
+                            <input type="text" class="entrada" id="descripcion" maxlength="50" required oninvalid="this.setCustomValidity('Debe llenar este campo')" oninput="setCustomValidity('')" autocomplete="off">
+
+                            <label for="descripcion">
+                            
+                                Descripción
+                            
+                            </label>
+
+                        </div>
+
+                        <div class="campo_entrada">
+
+                            <input type="file" class="imagen" id="imagen" required oninvalid="this.setCustomValidity('Debe seleccionar una imagen')" oninput="setCustomValidity('')"accept="image/*">
+
+                            <label for="imagen">
+                            
+                                Imagen
+                            
+                            </label>
+
+                        </div>
+
+                        <div class="campo_entrada">
+
+                            <button id="submit" name="aceptar" class="submit" onclick="addCar()">Registrar vehículo</button>
+                    
+                        </div>
+
+                        <div class="campo_entrada">
+
+                            <button type="submit" id="limpiar" name="limpiar" class="limpiar" onclick="clearAllData()">Limpiar registro</button>
+                    
+                        </div>
+
+                    </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            <div class="row justify-content-md-center">
+
+                <div class="col-md-10 centro">
+
+                    <!-- Registro de vehículos -->
+
+                    <div class="input-box">
+
+                        <h2>
+                            
+                            Registro de vehículos
+                        
+                        </h2>
+                        
+                        <div id="carListContainer">
+                            
+                            <div class="registro" id="carList"></div>
+                          
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Script para cambiar el logo en función del tamaño de la pantalla -->
+
+    <script>
+
+        function resize() {
+        
+            if ($(window).width() < 768) { 
+        
+                $(".logo img").attr('src', 'public/css/imagenes/logo.png');
+
+            } else {
+
+                $(".logo img").attr('src', 'public/css/imagenes/logo_texto.png');
+
+            }
+        }
+
+        resize();
+
+        $(window).on('resize', resize);
+
+    </script>
+
+    <!-- Script para abrir y cerrar la barra de navegación en dispositivos móviles -->
+
+    <script>
+    
+        let menu = document.querySelector("#menu-icon");
+        let barra = document.querySelector(".barra");
+
+        menu.onclick = () => {
+
+            menu.classList.toggle("bx-x");
+            barra.classList.toggle("open");
+
+        }
+    
+    </script>
+
+    <!-- Script para validar el año -->
+
+    <script>
+
+        // Función para validar el año
+
+        function chequearAno(event) {
+
+            // Obtener el valor actual del campo de entrada
+
+            var tecla = event.key;
+
+            // Permitir números del 0 al 9
+
+            var permitidas = "0123456789";
+
+            // Verificar si el valor ingresado está en la lista de caracteres permitidos
+
+            if (permitidas.indexOf(tecla) === -1) {
+
+                // El valor ingresado no es válido, prevenir la entrada
+                
+                event.preventDefault();
+
+            }
+
+        }
+        
+    </script>
+    
+</body>
+
+</html>
